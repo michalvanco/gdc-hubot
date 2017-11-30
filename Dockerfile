@@ -27,4 +27,7 @@ ADD install-npm.sh /gdc-hubot/install-npm.sh
 ADD external-scripts.json /gdc-hubot/external-scripts.json
 RUN /gdc-hubot/install-npm.sh
 
-CMD ["bin/hubot", "--adapter", "hipchat"]
+COPY get-k8s-vault-secret.sh /gdc-hubot/get-k8s-vault-secret.sh
+COPY run.sh /gdc-hubot/run.sh
+
+ENTRYPOINT "/gdc-hubot/run.sh"

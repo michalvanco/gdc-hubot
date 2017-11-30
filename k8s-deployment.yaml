@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: eod-chatops-bot
+spec:
+  serviceAccount: vault-auth
+  containers:
+  - name: eod-chatops-bot
+    image: docker-registry.na.intgdc.com/eod-chatops-bot:1.0
+    imagePullPolicy: Always
+    env:
+      - name: VAULT_ADDR
+        value: https://seti-k8s-master01.na.intgdc.com:31111
